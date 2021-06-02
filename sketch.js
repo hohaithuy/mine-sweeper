@@ -20,11 +20,18 @@ function setup(){
     cols = floor(width / w);
     rows = floor(height / w);
     grid = make2DArray(cols, rows);
-    for (var i = 0; i < cols; i++){
-        for(var j = 0; j < rows; j++){
+    var i, j;
+    for (i = 0; i < cols; i++){
+        for(j = 0; j < rows; j++){
             grid[i][j] = new Cell(i, j, w);
         }
     }
+    for (i = 0; i < cols; i++){
+        for(j = 0; j < rows; j++){
+            grid[i][j].countBees();
+        }
+    }
+
 }
 
 function mousePressed(){
