@@ -8,12 +8,13 @@ function make2DArray(cols, rows){
     return arr;
 }
 
-
-
 var grid;
 var cols;
 var rows;
 var w = 20;
+var totalBees = 10;
+
+
 
 function setup(){
     createCanvas(202, 202);
@@ -26,13 +27,23 @@ function setup(){
             grid[i][j] = new Cell(i, j, w);
         }
     }
+
+    for(var n = 0; n < totalBees; n++){
+        var i = floor(random(cols));
+        var j = floor(random(rows));
+        if (grid[i][j].bee == true) n--;
+        else grid[i][j].bee = true;
+    }
+
     for (i = 0; i < cols; i++){
         for(j = 0; j < rows; j++){
             grid[i][j].countBees();
         }
     }
 
+
 }
+
 
 function mousePressed(){
     for (var i = 0; i < cols; i++){
@@ -43,6 +54,10 @@ function mousePressed(){
         }
     }
 }
+
+
+
+
 
 
 function draw(){
